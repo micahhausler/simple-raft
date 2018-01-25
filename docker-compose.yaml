@@ -1,0 +1,23 @@
+version: "3"
+services:
+  node1:
+    build: ./
+    ports:
+    - '3000'
+    command:
+      - "-self=node1"
+      - "-nodes=node2,node3"
+  node2:
+    build: ./
+    ports:
+    - '3000'
+    command:
+      - "-self=node2"
+      - "-nodes=node1,node3"
+  node3:
+    build: ./
+    ports:
+    - '3000'
+    command:
+      - "-self=node3"
+      - "-nodes=node1,node2"
